@@ -1,19 +1,26 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import PrimaryButtons from "./components/PrimaryButtons";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+// import PrimaryButtons from "./components/ui/PrimaryButtons";
 import StartGameScreens from "./screens/StartGameScreens";
 import { LinearGradient } from "expo-linear-gradient";
 import { ImageBackground } from "react-native";
 import { useState } from "react";
 import GameScreens from "./screens/GameScreens";
+import GameOverScreens from "./screens/GameOverScreens";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
-  const pickedNumberHandler = (pickedNumber) =>{setUserNumber(pickedNumber);}
+  const [gameIsOver, setGameIsOver] = useState(true);
+
+  const pickedNumberHandler = (pickedNumber) =>{setUserNumber(pickedNumber); setGameIsOver(false)}
+  const changeGameOverStatus = () =>{setGameIsOver(true);}
 
   let screen = <StartGameScreens onPickedNumber={pickedNumberHandler}/>
   if (userNumber) {
-    screen = <GameScreens/>
+    screen = <GameScreens userNumber={userNumber} onGameOver={changeGameOverStatus}/>
+  }
+  if (gameIsOver && userNumber) {
+    screen = <GameOverScreens />
   }
   return (
     <LinearGradient colors={["#72063c", "#ddb52f"]} style={styles.container}>
@@ -23,7 +30,7 @@ export default function App() {
         style={styles.container}
         imageStyle={styles.backgroundImage}
       >
-        {screen}
+        <SafeAreaView style={styles.container}>{screen}</SafeAreaView>
         <StatusBar style="auto" />
       </ImageBackground>
     </LinearGradient>

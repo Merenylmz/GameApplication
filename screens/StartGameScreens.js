@@ -1,9 +1,12 @@
 import { View, Text, TextInput, StyleSheet, Alert } from "react-native";
 import React, { useState } from "react";
-import PrimaryButtons from "../components/PrimaryButtons";
+import PrimaryButtons from "../components/ui/PrimaryButtons";
+import Colors from "../constant/colors";
+import Card from "../components/ui/Card";
 
 const StartGameScreens = ({onPickedNumber}) => {
   const [enteredText, setEnteredText] = useState("");
+
   const handleConfirmSubmit = () =>{
     const number = parseInt(enteredText);
     if (number < 2 || number > 98 || isNaN(number)) {
@@ -15,9 +18,11 @@ const StartGameScreens = ({onPickedNumber}) => {
     onPickedNumber(number);
     setEnteredText("");
   }
+
   const resetButton = () =>{setEnteredText("");}
+
   return (
-    <View style={styles.inputsContainer}>
+    <Card>
       <View style={{ marginHorizontal: "auto" }}>
         <TextInput
           style={styles.numberInput}
@@ -39,33 +44,20 @@ const StartGameScreens = ({onPickedNumber}) => {
           <PrimaryButtons onPress={handleConfirmSubmit}>Confirm</PrimaryButtons>
         </View>
       </View>
-    </View>
+    </Card>
   );
 };
 
 export default StartGameScreens;
 
 const styles = StyleSheet.create({
-  inputsContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 100,
-    marginHorizontal: 24,
-    padding: 16,
-    backgroundColor: "#72063c",
-    elevation: 8, //ANDROID
-    shadowColor: "black", // IOS
-    shadowOffset: { width: 2, height: 10 }, //IOS
-    shadowOpacity: 0.25, //IOS
-    borderRadius: 10,
-  },
   numberInput: {
     borderBottomWidth: 2,
-    borderColor: "#ddb52f",
+    borderColor: Colors.accent500,
     width: 50,
     height: 50,
     padding: 7,
-    color: "#ddb52f",
+    color: Colors.accent500,
     fontSize: 32,
     fontWeight: "bold",
     textAlign: "center",
