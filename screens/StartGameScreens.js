@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import PrimaryButtons from "../components/ui/PrimaryButtons";
 import Colors from "../constant/colors";
 import Card from "../components/ui/Card";
+import InsructionText from "../components/ui/InsructionText";
+import Title from "../components/ui/Title";
 
 const StartGameScreens = ({onPickedNumber}) => {
   const [enteredText, setEnteredText] = useState("");
@@ -22,29 +24,34 @@ const StartGameScreens = ({onPickedNumber}) => {
   const resetButton = () =>{setEnteredText("");}
 
   return (
-    <Card>
-      <View style={{ marginHorizontal: "auto" }}>
-        <TextInput
-          style={styles.numberInput}
-          maxLength={2}
-          inputMode="numeric"
-          keyboardType="number-pad"
-          autoComplete="none"
-          autoCorrect={false}
-          autoCapitalize="none"
-          onChangeText={(e)=>setEnteredText(e)}          
-          value={enteredText}
-        />
-      </View>
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonContainer}>
-          <PrimaryButtons onPress={resetButton}>Reset</PrimaryButtons>
+    <View>
+      <Title style={{flex: 1, marginTop: 30}}>Guess Number</Title>
+      <Card>
+        <InsructionText>Enter A Number</InsructionText>
+        <View style={{ marginHorizontal: "auto" }}>
+
+          <TextInput
+            style={styles.numberInput}
+            maxLength={2}
+            inputMode="numeric"
+            keyboardType="number-pad"
+            autoComplete="none"
+            autoCorrect={false}
+            autoCapitalize="none"
+            onChangeText={(e)=>setEnteredText(e)}          
+            value={enteredText}
+            />
         </View>
-        <View style={styles.buttonContainer}>
-          <PrimaryButtons onPress={handleConfirmSubmit}>Confirm</PrimaryButtons>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButtons onPress={resetButton}>Reset</PrimaryButtons>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButtons onPress={handleConfirmSubmit}>Confirm</PrimaryButtons>
+          </View>
         </View>
-      </View>
-    </Card>
+      </Card>
+  </View>
   );
 };
 
