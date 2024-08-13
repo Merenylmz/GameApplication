@@ -28,7 +28,7 @@ const GameScreens = ({ userNumber, onGameOver }) => {
 
   useEffect(() => {
     if (currentGuess === userNumber) {
-      return onGameOver();
+      return onGameOver(guessRounds.length);
     }
   }, [currentGuess, userNumber, onGameOver]);
 
@@ -80,11 +80,13 @@ const GameScreens = ({ userNumber, onGameOver }) => {
           </View>
         </View>
       </Card>
-      <FlatList
-        data={guessRounds}
-        renderItem={({ item, index }) => <GuessRoundItem guess={item} roundNumber={index+(Math.log10(10))}></GuessRoundItem>}
-        keyExtractor={(item)=>item}
-      />
+      <View style={{flex: 1, padding: 10}}>
+        <FlatList
+          data={guessRounds}
+          renderItem={({ item, index }) => <GuessRoundItem guess={item} roundNumber={index+(Math.log10(10))}></GuessRoundItem>}
+          keyExtractor={(item)=>item}
+        />
+      </View>
     </View>
   );
 };

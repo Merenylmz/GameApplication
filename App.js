@@ -25,7 +25,10 @@ export default function App() {
   }
 
   const pickedNumberHandler = (pickedNumber) =>{setUserNumber(pickedNumber); setGameIsOver(false)}
-  const changeGameOverStatus = () =>{setGameIsOver(true);}
+  const changeGameOverStatus = (numberOfRounds) =>{
+    setGameIsOver(true);
+    setRoundsNumber(numberOfRounds);
+  }
 
   let screen = <StartGameScreens onPickedNumber={pickedNumberHandler}/>
 

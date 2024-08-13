@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.accent500,
         padding: 15,
         margin: 5,
-        borderRadius: 20
+        borderRadius: 28
     },
     guessRoundItemText: {
         // fontFamily: "open-sans",
