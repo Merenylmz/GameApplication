@@ -25,7 +25,7 @@ const StartGameScreens = ({onPickedNumber}) => {
 
   return (
     <View>
-      <Title style={{flex: 1, marginTop: 30}}>Guess Number</Title>
+      <Title style={{marginTop: 30}}>Guess Number</Title>
       <Card>
         <InsructionText>Enter A Number</InsructionText>
         <View style={{ marginHorizontal: "auto" }}>
