@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
 // import PrimaryButtons from "./components/ui/PrimaryButtons";
 import StartGameScreens from "./screens/StartGameScreens";
 import { LinearGradient } from "expo-linear-gradient";
@@ -53,7 +53,7 @@ export default function App() {
         imageStyle={styles.backgroundImage}
       >
         <SafeAreaView style={styles.container}>{screen}</SafeAreaView>
-        <StatusBar style="auto" />
+        <StatusBar style={Platform.OS === "android" ? "dark" : "light"} />
       </ImageBackground>
     </LinearGradient>
   );

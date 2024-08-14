@@ -19,15 +19,20 @@ export default GuessRoundItem;
 
 const styles = StyleSheet.create({
     guessContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
+        borderColor: Colors.primary800,
         borderWidth: 1,
-        borderColor: Colors.primary700,
+        borderRadius: 40,
+        padding: 12,
+        marginVertical: 8,
         backgroundColor: Colors.accent500,
-        padding: 15,
-        margin: 5,
-        borderRadius: 28
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        elevation: 4,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+        width: "100%"
     },
     guessRoundItemText: {
         // fontFamily: "open-sans",

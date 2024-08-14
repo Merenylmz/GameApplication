@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
 const Title = ({children, style}) => {
@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderWidth: 2,
     textAlign: "center",
-    padding: 12
+    padding: 12,
+    maxWidth: "80%",
+    width: 300
   }
 });
